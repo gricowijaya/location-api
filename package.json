@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "buffers": "^0.1.1",
     "fs": "^0.0.1-security",
     "request": "^2.88.2"
   }
