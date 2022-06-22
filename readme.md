@@ -177,4 +177,52 @@ We will get the responds such as the JSON snippets below.
 }
 ```
 
-As we can see the above type there's `addressComponents` parameter in the NEIGHBOURHOOD type of locations.   
+As we can see the above type there's `addressComponents` parameter in the NEIGHBOURHOOD type of locations. So we need to come up with some idea and that is to create the a function to handle the data and to loop the data also to get the values from the object keys because it is a nested JSON data.
+
+
+### Get Location Function
+
+We can import a few module such as `fs` and `node-fetch`, the `fs` module is for the file system such as read, write, and execute a file. Meanwhile the `node-fetch` module is for fetching the API endpoint. sol the first function we can try to create is to get location because the API endpoint path.       
+
+We can call this function to named `getLocation()` to get the Data for the location and then push the an array called `kecamatans` 
+
+```javascript
+// get the location for all and assign the kecamatan ('NEIGHBOURHOOD')
+const getLocation = async () => {
+  for (let index = 5000001; index <= 5005005; index++) {
+    const url = `https://www.olx.co.id/api/locations/${index}/path`
+    const response = await fetch(url);
+    const data = await response.json();
+    kecamatans.push(data['data'][0]);
+  }
+  // call the iterateObject function
+  iterateObject(kecamatans);
+}
+```
+
+We can try to create the function for iterating the object and then create the json data.  
+
+```javascript
+// to iterate through the kecamatans data
+const iterateObject = async (kecamatans) => {
+  const kecamatan = [];
+  kecamatans.forEach(element => {
+    let object = {
+      "nama_kecamatan": element.name,
+      "tipe": element.type,
+      "longitude": element.longitude,
+      "latitude": element.latitude,
+      "id_kota": element.parentId,
+      "nama_kota": element['addressComponents'][2]['name']
+    };
+    kecamatan.push(object);
+    // data.push(kecamatan);
+    // data = JSON.strigify(data, null, 2);
+  });
+  let data = JSON.stringify(kecamatan);
+  // console.log(data);
+  writeData(data);
+}
+```
+
+

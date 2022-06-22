@@ -2,6 +2,10 @@
   "dependencies": {
     "buffers": "^0.1.1",
     "fs": "^0.0.1-security",
-    "request": "^2.88.2"
+    "node-fetch": "^2.6.7"
+  },
+  "scripts": {
+    "kec": "node ./src/kecamatan.js",
+    "kot": "node ./src/kota.js"
   }
 }
