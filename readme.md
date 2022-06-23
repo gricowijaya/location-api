@@ -225,4 +225,14 @@ const iterateObject = async (kecamatans) => {
 }
 ```
 
+But we also can try to create the description and image keys the object  
+
+### Run the Program Using the command below 
+
+```bash
+npm run write
+```
+
+Then We can get the data 
+
 
