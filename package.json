@@ -5,7 +5,6 @@
     "node-fetch": "^2.6.7"
   },
   "scripts": {
-    "kec": "node ./src/kecamatan.js",
-    "kot": "node ./src/kota.js"
+    "write": "node index.js"
   }
 }
