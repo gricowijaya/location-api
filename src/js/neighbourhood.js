@@ -54,7 +54,7 @@ const getLocation = async () => {
 const writeData = async (data) => {
   // get the array 
   const text = new Uint8Array(Buffer.from(data));
-  const fileName = "./resource/neighbourhood.json";
+  const fileName = "./resource/data/neighbourhood.json";
   fs.writeFile(fileName, text, (error)  => {
     if (error) throw error;
     console.log(`Neighbourhood data is saved at ${fileName} !`);
