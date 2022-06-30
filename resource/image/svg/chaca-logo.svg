@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="137" height="56" viewBox="0 0 137 56">
+  <g id="Group_2192" data-name="Group 2192" transform="translate(-285 -21)">
+    <text id="chaca" transform="translate(336 51)" font-size="30" font-family="Mulish" font-weight="700"><tspan x="0" y="0">chaca</tspan></text>
+    <text id="MARKET" transform="translate(336 73)" font-size="17" font-family="Mulish" font-weight="300" letter-spacing="0.16em"><tspan x="0" y="0">MARKET</tspan></text>
+    <g id="Group_2190" data-name="Group 2190" transform="translate(285 30.384)">
+      <rect id="Rectangle_867" data-name="Rectangle 867" width="46" height="45" rx="4" transform="translate(0 -0.385)" fill="#001a1a"/>
+      <g id="Group_2189" data-name="Group 2189" transform="translate(7.915 8.092)">
+        <path id="Path_5509" data-name="Path 5509" d="M493.951,505.568a8.113,8.113,0,0,1,.36-11.812,8.432,8.432,0,0,1,10.808.046,6.6,6.6,0,0,1,2.673,5.6,3.513,3.513,0,0,0,7.021.25c.157-4.162-1.416-7.682-4.72-10.814a15.137,15.137,0,0,0-21.11,21.7,14.028,14.028,0,0,0,10.808,4.421,3.513,3.513,0,0,0-.289-7.02,7.04,7.04,0,0,1-5.553-2.368" transform="translate(-484.551 -484.717)" fill="#fedd00"/>
+        <path id="Path_5510" data-name="Path 5510" d="M833.777,833.888a3.446,3.446,0,1,0-3.446,3.446,3.446,3.446,0,0,0,3.446-3.446" transform="translate(-803.763 -807.092)" fill="#fedd00"/>
+        <path id="Path_5511" data-name="Path 5511" d="M664.534,661.086a3.446,3.446,0,1,0-3.446,3.446,3.446,3.446,0,0,0,3.446-3.446" transform="translate(-645.951 -645.961)" fill="#fedd00"/>
+      </g>
+    </g>
+  </g>
+</svg>
