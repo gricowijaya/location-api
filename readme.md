@@ -1,4 +1,4 @@
-# Crawling OLX Kecamatans Data 
+# Kecamatans Data 
 
 ## Why ? 
 
@@ -236,3 +236,8 @@ npm run write
 Then We can get the data 
 
 
+## References
+
+https://www.npmjs.com/package/canvas --> canvas documentation
+https://blog.logrocket.com/creating-saving-images-node-canvas/ --> for saving image such as logo
+https://www.thecolorapi.com/docs --> for color pallete
