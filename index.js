@@ -1,4 +1,3 @@
-const kecamatan = require('./src/kecamatan.js')
+const command = require('./src/js/command');
 
-kecamatan.getLocation(); 
-
+command.run();
