@@ -241,3 +241,4 @@ Then We can get the data
 https://www.npmjs.com/package/canvas --> canvas documentation
 https://blog.logrocket.com/creating-saving-images-node-canvas/ --> for saving image such as logo
 https://www.thecolorapi.com/docs --> for color pallete
+https://stackoverflow.com/questions/34485420/how-do-you-put-an-image-file-in-a-json-object
