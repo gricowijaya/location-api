@@ -2,22 +2,19 @@ const { createCanvas, loadImage } = require('canvas')
 const fs = require('fs') // filesystem
 const { default: fetch } = require('node-fetch')
 
-// create foreground color for every avatar (darker color)
-const generateForegroundColor = async () => {
-    const seed = '01122A';
-    const url = `https://www.thecolorapi.com/scheme?hex=${seed}&format=json&count=1`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data.colors[.na]);
+const getRanHex = () => {
+  let result = [];
+  let hexRef = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+  let size = 6;
+
+  for (let n = 0; n < size; n++) {
+    result.push(hexRef[Math.floor(Math.random() * 16)]);
+  }
+  return result.join('');
 }
 
-// generate background color for every avatar (lighter color)
-// const generateBackgroundColor = () => {
-//
-// }
-
 // generate Avatar function to create avatar for every neighbourhood
-const generateAvatar =  (text, foregroundColor, backgroundColor) => {
+const generateAvatar = async (text, foregroundColor, backgroundColor) => {
   try {
 
     // get the Initial for text
@@ -73,4 +70,4 @@ const generateAvatar =  (text, foregroundColor, backgroundColor) => {
   }
 }
   
-module.exports =  { generateAvatar, generateForegroundColor };
+module.exports =  { generateAvatar, getRanHex };
