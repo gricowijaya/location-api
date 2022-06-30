@@ -18,7 +18,7 @@ const getStructure = async () => {
 const iterateObject = async (neighbourhoods) => {
   const neighbourhood = [];
   neighbourhoods.forEach(element => {
-    generateAvatar(element.name, 'black', 'white'); // generateAvatar using initial check the console
+    generateAvatar(element.name, '#546A76', '#88A0A8'); // generateAvatar using initial check the console
 
     // create the object
     let object = {
@@ -45,7 +45,7 @@ const iterateObject = async (neighbourhoods) => {
 const getLocation = async () => {
   // loop until the latest data
   // for (let index = 5000001; index <= 5007094; index++) {
-  for (let index = 5000001; index <= 5000007; index++) {
+  for (let index = 5000001; index <= 5000008; index++) {
     const url = `https://www.olx.co.id/api/locations/${index}/path`
     const response = await fetch(url);
     const data = await response.json();

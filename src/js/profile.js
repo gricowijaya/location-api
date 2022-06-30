@@ -1,6 +1,22 @@
 const { createCanvas, loadImage } = require('canvas')
 const fs = require('fs') // filesystem
+const { default: fetch } = require('node-fetch')
 
+// create foreground color for every avatar (darker color)
+const generateForegroundColor = async () => {
+    const seed = '01122A';
+    const url = `https://www.thecolorapi.com/scheme?hex=${seed}&format=json&count=1`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data.colors[.na]);
+}
+
+// generate background color for every avatar (lighter color)
+// const generateBackgroundColor = () => {
+//
+// }
+
+// generate Avatar function to create avatar for every neighbourhood
 const generateAvatar =  (text, foregroundColor, backgroundColor) => {
   try {
 
@@ -57,4 +73,4 @@ const generateAvatar =  (text, foregroundColor, backgroundColor) => {
   }
 }
   
-module.exports =  { generateAvatar };
+module.exports =  { generateAvatar, generateForegroundColor };
