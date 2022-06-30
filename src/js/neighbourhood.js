@@ -1,5 +1,6 @@
-const fetch = require('node-fetch')
+const fetch = require('node-fetch') // for fetching url
 const fs = require('fs') // filesystem
+const { generateAvatar } = require('./profile.js') // import generateAvatar function
 const neighbourhoods = []; // array for neighbourhoods
 
 
@@ -17,6 +18,9 @@ const getStructure = async () => {
 const iterateObject = async (neighbourhoods) => {
   const neighbourhood = [];
   neighbourhoods.forEach(element => {
+    generateAvatar(element.name, 'black', 'white'); // generateAvatar using initial check the console
+
+    // create the object
     let object = {
       "id": element.id,
       "name": element.name,
@@ -26,22 +30,22 @@ const iterateObject = async (neighbourhoods) => {
       "latitude": element.latitude,
       "city_id": element.parentId,
       "city_name": element['addressComponents'][2]['name'], 
-      "image" : `testing_image`
+      "image" : `./resource/image/png/${element.name}.png`
     };
     neighbourhood.push(object);
     // data.push(neighbourhood);
     // data = JSON.strigify(data, null, 2);
   });
   let data = JSON.stringify(neighbourhood);
-  // console.log(data);
-  writeData(data);
+  console.log(data); // see the output data
+  writeData(data);   // write the Data
 }
 
 // get the location for all and assign the neighbourhood ('NEIGHBOURHOOD')
 const getLocation = async () => {
   // loop until the latest data
   // for (let index = 5000001; index <= 5007094; index++) {
-  for (let index = 5000001; index <= 5000002; index++) {
+  for (let index = 5000001; index <= 5000007; index++) {
     const url = `https://www.olx.co.id/api/locations/${index}/path`
     const response = await fetch(url);
     const data = await response.json();
@@ -64,4 +68,4 @@ const writeData = async (data) => {
 // getStructure(); // to get the object example
 // getLocation();
 
-module.exports =  {writeData, getLocation, getStructure, iterateObject}
+module.exports =  { writeData, getLocation, getStructure, iterateObject }
