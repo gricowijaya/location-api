@@ -14,11 +14,11 @@ const getRanHex = () => {
 }
 
 // generate Avatar function to create avatar for every neighbourhood
-const generateAvatar = async (text, foregroundColor, backgroundColor) => {
+const generateAvatar = async (element, foregroundColor, backgroundColor) => {
   try {
 
-    // get the Initial for text
-    var initials = text.match(/\b\w/g) || [];
+    // get the Initial for element
+    var initials = element.name.match(/\b\w/g) || [];
     initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
     console.log(initials);
 
@@ -41,7 +41,7 @@ const generateAvatar = async (text, foregroundColor, backgroundColor) => {
     context.fillStyle = backgroundColor;                         // context background style
     context.fillRect(20, 20, canvas.width, canvas.height);         // draw a rectangle  
 
-    // Draw text
+    // Draw element
     context.font = "bold 100px mulish";                            // font type
     context.fillStyle = foregroundColor;                             // foregroundColor
     context.textAlign = "center";                                    // text alignment
@@ -50,7 +50,7 @@ const generateAvatar = async (text, foregroundColor, backgroundColor) => {
     context.fillText(initials, 200, 200); // fill the canvas using initials
 
     // const chacaLogo = "./resource/image/svg/chaca-logo-ka-aidil.svg" 
-    const fileName = `./resource/image/png/neighbourhood/${text}.png`
+    const fileName = `./resource/image/png/neighbourhood/${element.id}_${element.name}.png`
 
     const buffer = canvas.toBuffer("image/png"); // create an png file
     fs.writeFileSync(fileName, buffer);
@@ -63,7 +63,7 @@ const generateAvatar = async (text, foregroundColor, backgroundColor) => {
     //   fs.writeFileSync(fileName, buffer);
     // });
 
-    console.log(`Profile image for ${text} has been generated in ${fileName}`);
+    console.log(`Profile image for ${element.name} has been generated in ${fileName}`);
 
   } catch (error) {
     console.log(error)

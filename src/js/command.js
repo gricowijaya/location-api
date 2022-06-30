@@ -1,14 +1,15 @@
 const neighbourhood = require('./neighbourhood.js');
-const profileImageGenerator = require('./profile.js');
 
-const run = () => { 
-  try {
-    neighbourhood.getLocation();
-    // profileImageGenerator.generateAvatar('Abiansemal Bali', 'black', 'white');
-    // profileImageGenerator.generateForegroundColor()
-  } catch (error) {
-    console.log(`There's an error -> ${error}`)
-  }
+const run = {
+  generateLocation: async () => { 
+    try {
+      const getLocation = neighbourhood.getLocation()
+      console.log(getLocation);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 }
+
 
 module.exports = { run }; 

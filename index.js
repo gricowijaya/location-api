@@ -1,3 +1,4 @@
 const command = require('./src/js/command');
 
-command.run();
+// command.run.generateLocation();
+// command.run.generateAvatarForLocation();
