@@ -21,6 +21,14 @@ const getStructure = async () => {
   console.log(done['data'][0]);
 }
 
+const readData = () => {
+  const file = './resource/data/kecamatan.json'
+  return JSON.parse(fs.existsSync(file)
+    ? fs.readFileSync(file).toString()
+    : '' 
+)}
+
+
 const generateNeighbourhoodAvatar = async (neighbourhoods) => {
   neighbourhoods.forEach(async element => {
     const seed = getRanHex();
@@ -61,15 +69,15 @@ const iterateObject = async (neighbourhoods) => {
 
   let data = JSON.stringify(neighbourhood);
   // console.log(`${data}`); // see the output data
-  // writeData(data).then(() => generateNeighbourhoodAvatar(neighbourhoods));   // write the Data
-  generateNeighbourhoodAvatar(neighbourhoods)
+  writeData(data).then(() => generateNeighbourhoodAvatar(neighbourhoods));   // write the Data
+  // generateNeighbourhoodAvatar(neighbourhoods)
   console.log(writeData(data));
 }
 
 // get the location for all and assign the neighbourhood ('NEIGHBOURHOOD')
 const getLocation = async () => {
   // loop until the latest data
-  for (let index = 5000050; index <= 5007094; index++) {
+  for (let index = 5000051; index <= 5007094; index++) {
   // for (let index = 5000001; index <= 5000050; index++) {
     const url = `https://www.olx.co.id/api/locations/${index}/path`
     const response = await fetch(url);
@@ -93,4 +101,4 @@ const writeData = async (data) => {
 // getStructure(); // to get the object example
 // getLocation();
 
-module.exports =  { writeData, getLocation, getStructure, iterateObject, generateNeighbourhoodAvatar, neighbourhoods }
+module.exports =  { getLocation, getStructure, iterateObject, generateNeighbourhoodAvatar, neighbourhoods, writeData, readData }
