@@ -77,7 +77,7 @@ const iterateObject = async (neighbourhoods) => {
 // get the location for all and assign the neighbourhood ('NEIGHBOURHOOD')
 const getLocation = async () => {
   // loop until the latest data
-  for (let index = 5000051; index <= 5007094; index++) {
+  for (let index = 5000001; index <= 5007094; index++) {
   // for (let index = 5000001; index <= 5000050; index++) {
     const url = `https://www.olx.co.id/api/locations/${index}/path`
     const response = await fetch(url);
