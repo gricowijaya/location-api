@@ -3,24 +3,20 @@ const fs = require('fs') // filesystem
 const path = require('path') // for reading path
 const { generateAvatar, getRanHex } = require('./profile.js'); // import generateAvatar function
 const { Console } = require('console');
+const _ = require('underscore');
 const neighbourhoods = []; // array for neighbourhoods
-
-// encoding the image file
-// base64_encode = (file) => {
-//   let bitmap = fs.readFileSync(file);
-//   return new Buffer(bitmap).toString('base64');
-// }
 
 // for testing the structure example
 const getStructure = async () => {
   // latest neighbourhoods
-  const url = `https://www.olx.co.id/api/locations/5007094/path`
+  const url = `https://www.olx.co.id/api/locations/5000090/path`
   const response = await fetch(url);
   const data = await response.json();
-  done = data;
-  console.log(done['data'][0]);
+  // console.log(data['data'][0].addressComponents[1].id);
+  console.log(data);
 }
 
+// for reading file
 const readData = () => {
   const file = './resource/data/kecamatan.json'
   return JSON.parse(fs.existsSync(file)
@@ -62,7 +58,7 @@ const iterateObject = async (neighbourhoods) => {
       "image" : imagePath
     };
     neighbourhood.push(object);
-
+    console.log(`neighourhood for this ${object.name} has been created`)
     // data.push(neighbourhood);
     // data = JSON.strigify(data, null, 2);
   });
@@ -71,19 +67,28 @@ const iterateObject = async (neighbourhoods) => {
   // console.log(`${data}`); // see the output data
   writeData(data).then(() => generateNeighbourhoodAvatar(neighbourhoods));   // write the Data
   // generateNeighbourhoodAvatar(neighbourhoods)
-  console.log(writeData(data));
+  // console.log(writeData(data));
 }
 
-// get the location for all and assign the neighbourhood ('NEIGHBOURHOOD')
-const getLocation = async () => {
+const getBaliProvinceNeighbourhood = async () => {
   // loop until the latest data
-  for (let index = 5000001; index <= 5007094; index++) {
+  for (let index = 5000001; index <= 5000100; index++) {
   // for (let index = 5000001; index <= 5000050; index++) {
     const url = `https://www.olx.co.id/api/locations/${index}/path`
     const response = await fetch(url);
     const data = await response.json();
-    neighbourhoods.push(data['data'][0]);
+    const province = data['data'][0].addressComponents[1].id;
+    const neighbourhood = data['data'][0].name;
+    if (province != '2000002') { 
+      break;
+      console.log(`${neighbourhood} is not from Bali moving`);
+    } else { 
+      console.log(`${neighbourhood} is from Bali and written`)
+      neighbourhoods.push(data['data'][0]);
+    }
   }
+
+  // console.log(filtered);
   iterateObject(neighbourhoods);
 }
 
@@ -91,7 +96,8 @@ const getLocation = async () => {
 const writeData = async (data) => {
   // get the array 
   const text = new Uint8Array(Buffer.from(data));
-  const fileName = "./resource/data/neighbourhood.json";
+  // const fileName = "./resource/data/neighbourhood.json"; // original
+  const fileName = "./resource/data/baliNeighbourhood.json"; // experiment
   fs.writeFile(fileName, text, (error)  => {
     if (error) throw error;
     console.log(`Neighbourhood data is saved at ${fileName} !`);
@@ -101,4 +107,4 @@ const writeData = async (data) => {
 // getStructure(); // to get the object example
 // getLocation();
 
-module.exports =  { getLocation, getStructure, iterateObject, generateNeighbourhoodAvatar, neighbourhoods, writeData, readData }
+module.exports =  { getStructure, iterateObject, getBaliProvinceNeighbourhood }

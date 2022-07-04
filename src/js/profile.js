@@ -50,10 +50,14 @@ const generateAvatar = async (element, foregroundColor, backgroundColor) => {
     context.fillText(initials, 200, 200); // fill the canvas using initials
 
     // const chacaLogo = "./resource/image/svg/chaca-logo-ka-aidil.svg" 
-    const fileName = `./resource/image/png/neighbourhood/${element.id}_${element.name}.png`
+    // const fileName = `./resource/image/png/neighbourhood/${element.id}_${element.name}.png`
+    // const fileName = `./resource/image/png/testing_neighbourhood/${element.id}_${element.name}.png`
+    const fileName = `./resource/image/png/baliNeighbourhood/${element.id}_${element.name}.png`
 
     const buffer = canvas.toBuffer("image/png"); // create an png file
     fs.writeFileSync(fileName, buffer);
+
+    // if you want to use the logo
 
     // loadImage(chacaLogo).then((image) => {
     //   const { w, h, x, y } = imagePosition;
