@@ -2,7 +2,6 @@ const fetch = require('node-fetch')
 const fs = require('fs') // filesystem
 const cities = []; // array for citys
 
-
 // for testing the structure example
 const getStructure = async () => {
   // latest cities
