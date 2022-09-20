@@ -1,0 +1,7 @@
+version: "1.0"
+services:
+  location-api:
+    build: .
+    restart: unless-stopped
+    ports:
+      - ${HTTP_PORT}:8080
