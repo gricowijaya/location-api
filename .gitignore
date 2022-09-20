@@ -1,4 +1,5 @@
 node_modules/
-notes.md
+notes.md/
 resource/
+resourceImageAndData/
 .env

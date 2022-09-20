@@ -1,26 +1,12 @@
-// const command = require('./src/js/command');
-
-// command.run.generateLocation();
-// command.run.generateAvatarForLocation();
-// command.run.generateLocation();
-
 require('dotenv').config(); // to read the env file
 const express = require("express");
 const app = express();
-const routes = require('./src/routes');
+const routes = require('./routes');
 
-// app.use('/api/v1', routes);
+app.use(express.json());
 
+// for getting the data
 app.use('/api/v1/', routes);
 
-// home endpoint
-app.get("/", (req, res) => { 
-  return res.json({
-    status: 200,
-    data: "Bali" 
-  })
-});
-
-app.listen(process.env.HTTP_PORT, () =>{
-  console.log(`success! listening on port ${process.env.HTTP_PORT}`);
-});
+// check the connection and port
+app.listen(process.env.HTTP_PORT, () => {console.log(`It's running on ${process.env.HTTP_PORT}`)});
