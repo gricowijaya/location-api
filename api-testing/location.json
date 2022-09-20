@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "fa380b75-f51a-4546-9553-d0a8822d3ba7",
+		"name": "Location",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20143338"
+	},
+	"item": [
+		{
+			"name": "neighbourhood",
+			"item": [
+				{
+					"name": "Testing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.olx.co.id/api/locations/5007000/path",
+							"protocol": "https",
+							"host": [
+								"www",
+								"olx",
+								"co",
+								"id"
+							],
+							"path": [
+								"api",
+								"locations",
+								"5007000",
+								"path"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Structure",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8231/api/v1/neighbourhood",
+							"host": [
+								"localhost"
+							],
+							"port": "8231",
+							"path": [
+								"api",
+								"v1",
+								"neighbourhood"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8231/api/v1/neighbourhood/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8231",
+							"path": [
+								"api",
+								"v1",
+								"neighbourhood",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
