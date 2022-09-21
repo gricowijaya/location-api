@@ -1,6 +1,6 @@
 const fetch = require('node-fetch'); // for fetching url
 const fs = require('fs'); // filesystem
-const neighbourhoodData = require('../data/neighbourhood.json');
+const neighbourhoodData = require('../data/neighbourhood.json'); // neighbourhood
 // const path = require('path') // for reading path
 // const { generateAvatar, getRanHex } = require('./profile.js'); // import generateAvatar function
 // const { Console } = require('console');
@@ -44,22 +44,53 @@ const neighbourhood = {
     }
   },
 
-  writeNeighbourhood: async (file, lastIndex) => {
+  writeNeighbourhood: async (file, lastIndexToBeRequested) => {
+    try {
+      // get the latest id on the file of ../data/neighbourhood.json
+      const latestIndexInFile = neighbourhoodData[neighbourhoodData.length - 1].neighbourhood.id;
+      
+      // check the output 
+      // console.log(latestIndexInFile);
+      
+      let neighbourhoods = neighbourhoodData;
+      
+      // check the output
+      // console.log(neighbourhoods);
+      
+      for (let i = 5000001 ; i <= lastIndexToBeRequested; i++ ) {
+        let data = await neighbourhood.getNeighbourhoodDetails(i);
+        neighbourhoods.push(data);
+        console.log(`${data.neighbourhood.id} ${data.neighbourhood.name} has written into ${file}`);
+
+      }
+      fs.writeFileSync(file, JSON.stringify(neighbourhoods), null, 4);
+
+
+      return neighbourhoods;
+    } catch(err) {
+      throw `Couldn't get the Data -> ${err}`;
+    }
+  },
+
+  appendNeighbourhood: async (file, lastIndexToBeRequested) => {
     try {
       // // get the latest id
-      console.log(neighbourhoodData[neighbourhoodData.length - 1].neighbourhood.id);
-      // const latestIndexInFile
-      let neighbourhoods = []
-      for (let i = 5000109  ; i <= lastIndex; i++ ) {
-        let data = await neighbourhood.getNeighbourhoodDetails(i);
-        // console.log(data);
-        neighbourhoods.push(data);
-        // console.log(`${data.neighbourhood.id} ${data.neighbourhood.name} has written into ${file}`);
-        //
-      }
-      fs.writeFileSync(file, JSON.stringify(neighbourhoods));
+      const latestIndexInFile = neighbourhoodData[neighbourhoodData.length - 1].neighbourhood.id;
+      // console.log(latestIndexInFile);
+      // console.log(neighbourhoodData);
+      let neighbourhoods = neighbourhoodData;
+      
+      // console.log(neighbourhoods);
 
-      return neighbourhoodData;
+      for (let i = latestIndexInFile ; i <= lastIndexToBeRequested; i++ ) {
+        let data = await neighbourhood.getNeighbourhoodDetails(i);
+        neighbourhoods.push(data);
+        console.log(`${data.neighbourhood.id} ${data.neighbourhood.name} has appended into ${file}`);
+
+      }
+      fs.writeFileSync(file, JSON.stringify(neighbourhoods), null, 4);
+
+      return neighbourhoods;
     } catch(err) {
       throw `Couldn't get the Data -> ${err}`;
     }
