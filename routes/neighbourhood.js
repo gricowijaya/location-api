@@ -24,8 +24,25 @@ router.get('/details', async (req, res) => {
   }
 });
 
+router.post('/append', async (req, res) => {
+  try {
+    const file = "./data/neighbourhood.json";
+    const { lastIndexToBeRequested } = req.body; 
+    const data = await controller.neighbourhood.appendNeighbourhood(file, lastIndexToBeRequested);
+    return res.status(200).json({
+      status: "success",
+      message: `Data has written in the path of ${file}`,
+      data: data
+    });
+  } catch (err) {
+    return res.status(500).json({
+      status: "failed",
+      error: err
+    });
+  }
+});
 
-router.post('/create', async (req, res) => {
+router.post('/create-new', async (req, res) => {
   try {
     const file = "./data/neighbourhood.json";
     const { lastIndexToBeRequested } = req.body; 
