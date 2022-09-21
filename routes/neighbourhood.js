@@ -1,4 +1,5 @@
 const express = require('express');
+const { last } = require('underscore');
 const router = express.Router();
 const controller = require('../controller');
 
@@ -9,7 +10,7 @@ router.get('/details', async (req, res) => {
     const data = await controller.neighbourhood.getNeighbourhoodDetails(id);
 
     // check the data
-    console.log(data); 
+    // console.log(data); 
     
     return res.status(200).json({
       status: "success",
@@ -27,8 +28,8 @@ router.get('/details', async (req, res) => {
 router.post('/create', async (req, res) => {
   try {
     const file = "./data/neighbourhood.json";
-    const { lastIndex } = req.body; 
-    const data = await controller.neighbourhood.writeNeighbourhood(file, lastIndex);
+    const { lastIndexToBeRequested } = req.body; 
+    const data = await controller.neighbourhood.writeNeighbourhood(file, lastIndexToBeRequested);
     return res.status(200).json({
       status: "success",
       message: `Data has written in the path of ${file}`,
