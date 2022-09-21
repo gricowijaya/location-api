@@ -106,13 +106,13 @@
 					"response": []
 				},
 				{
-					"name": "create",
+					"name": "append",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"lastIndexToBeRequested\": 5000017\n    \n}",
+							"raw": "{\n    \"lastIndexToBeRequested\": 5007094\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -120,7 +120,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8231/api/v1/neighbourhood/create/",
+							"raw": "localhost:8231/api/v1/neighbourhood/append/",
 							"host": [
 								"localhost"
 							],
@@ -129,7 +129,7 @@
 								"api",
 								"v1",
 								"neighbourhood",
-								"create",
+								"append",
 								""
 							]
 						}
